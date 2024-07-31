@@ -1,0 +1,28 @@
+{
+  "name": "oeb-messages-component",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A messages component for OEB web ecosystem",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "BSC",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inab/oeb-messages.git"
+  },
+  "keywords": [
+    "oeb",
+    "messages",
+    "component",
+    "openEBench"
+  ]
+}
