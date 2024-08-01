@@ -34,9 +34,10 @@ export default class CustomMessage extends HTMLElement {
                     let end_day = this.getDateOrdinals(end_date.getDate());
                     let end_month = end_date.toLocaleString('en-EN', { month: 'long' });
 
+                    console.log(response.message)
+                    messageResponse = messageResponse.replace("##end_month", end_month);
                     messageResponse = messageResponse.replace("##start_date", start_day);
                     messageResponse = messageResponse.replace("##end_date", end_day);
-                    messageResponse = messageResponse.replace("##end_month", end_month);
                     return messageResponse;
                 }
                 else {
