@@ -22,7 +22,7 @@ export default class CustomMessage extends HTMLElement {
             if(data && data !== "") {
                 let response = JSON.parse(data);
                 let actualDate = new Date();
-                if(response.isActive && actualDate >= new Date(response.start_date) && actualDate <= new Date(response.end_date)) {
+                if(response.isActive) {
                     let messageResponse = "";
                     if(response.icon && response.icon !== "") {
                         messageResponse += response.icon;

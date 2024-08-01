@@ -1,4 +1,4 @@
-class h extends HTMLElement {
+class u extends HTMLElement {
   constructor() {
     super(), this.url = null, this.borderColor = "#c6d8e9", this.backgroundColor = "#f8f8f8", this.textColor = "#000000";
   }
@@ -7,12 +7,12 @@ class h extends HTMLElement {
     e.style.border = `1px solid ${this.borderColor}`, e.style.backgroundColor = this.backgroundColor, e.style.color = this.textColor, e.style.padding = "10px 20px";
     let s = await this.getJSON(this.url).then((o) => {
       if (o && o !== "") {
-        let t = JSON.parse(o), n = /* @__PURE__ */ new Date();
-        if (t.isActive && n >= new Date(t.start_date) && n <= new Date(t.end_date)) {
-          let r = "";
-          t.icon && t.icon !== "" && (r += t.icon), r += t.message;
-          let i = /* @__PURE__ */ new Date(t.start_date + "Z"), l = this.getDateOrdinals(i.getDate()), a = /* @__PURE__ */ new Date(t.end_date + "Z"), u = this.getDateOrdinals(a.getDate()), c = a.toLocaleString("en-EN", { month: "long" });
-          return r = r.replace("##end_month", c), r = r.replace("##start_date", l), r = r.replace("##end_date", u), r;
+        let r = JSON.parse(o);
+        if (r.isActive) {
+          let t = "";
+          r.icon && r.icon !== "" && (t += r.icon), t += r.message;
+          let i = /* @__PURE__ */ new Date(r.start_date + "Z"), l = this.getDateOrdinals(i.getDate()), n = /* @__PURE__ */ new Date(r.end_date + "Z"), a = this.getDateOrdinals(n.getDate()), c = n.toLocaleString("en-EN", { month: "long" });
+          return t = t.replace("##end_month", c), t = t.replace("##start_date", l), t = t.replace("##end_date", a), t;
         } else
           return "";
       }
@@ -48,10 +48,4 @@ class h extends HTMLElement {
     });
   }
 }
-customElements.define("custom-message", h);
-document.querySelector("#oeb-message").innerHTML = `
-    <custom-message 
-    textColor="pink"
-    url="https://raw.githubusercontent.com/inab/oeb-messages/main/demo/message.json">
-    </custom-message>
-  `;
+customElements.define("custom-message", u);
