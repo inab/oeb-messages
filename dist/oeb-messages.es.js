@@ -4,15 +4,15 @@ class h extends HTMLElement {
   }
   async createMessage() {
     let e = document.createElement("div");
-    e.style.border = `1px solid ${this.borderColor}`, e.style.backgroundColor = this.backgroundColor, e.style.color = this.textColor, e.style.padding = "10px 20px", console.log(this);
+    e.style.border = `1px solid ${this.borderColor}`, e.style.backgroundColor = this.backgroundColor, e.style.color = this.textColor, e.style.padding = "10px 20px";
     let s = await this.getJSON(this.url).then((o) => {
       if (o && o !== "") {
         let t = JSON.parse(o), n = /* @__PURE__ */ new Date();
         if (t.isActive && n >= new Date(t.start_date) && n <= new Date(t.end_date)) {
           let r = "";
           t.icon && t.icon !== "" && (r += t.icon), r += t.message;
-          let l = /* @__PURE__ */ new Date(t.start_date + "Z"), i = this.getDateOrdinals(l.getDate()), a = /* @__PURE__ */ new Date(t.end_date + "Z"), c = this.getDateOrdinals(a.getDate()), u = a.toLocaleString("en-EN", { month: "long" });
-          return r = r.replace("##end_month", u), r = r.replace("##start_date", i), r = r.replace("##end_date", c), r;
+          let i = /* @__PURE__ */ new Date(t.start_date + "Z"), l = this.getDateOrdinals(i.getDate()), a = /* @__PURE__ */ new Date(t.end_date + "Z"), u = this.getDateOrdinals(a.getDate()), c = a.toLocaleString("en-EN", { month: "long" });
+          return r = r.replace("##end_month", c), r = r.replace("##start_date", l), r = r.replace("##end_date", u), r;
         } else
           return "";
       }

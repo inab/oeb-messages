@@ -1,5 +1,5 @@
 {
-  "name": "oeb-messages",
+  "name": "@inab/oeb-messages",
   "private": true,
   "version": "1.0.0",
   "description": "A messages component for OEB web ecosystem",
@@ -34,5 +34,17 @@
     "messages",
     "component",
     "openEBench"
-  ]
+  ],
+  "dependencies": {
+    "esbuild": "^0.21.5",
+    "nanoid": "^3.3.7",
+    "picocolors": "^1.0.1",
+    "postcss": "^8.4.40",
+    "rollup": "^4.19.1",
+    "source-map-js": "^1.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/inab/oeb-messages/issues"
+  },
+  "homepage": "https://github.com/inab/oeb-messages#readme"
 }
