@@ -1,10 +1,20 @@
 {
-  "name": "oeb-messages-component",
+  "name": "oeb-messages",
   "private": true,
   "version": "1.0.0",
   "description": "A messages component for OEB web ecosystem",
-  "main": "build/index.js",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/oeb-messages.es.js",
+      "require": "./dist/oeb-messages.cjs.js"
+    }
+  },
+  "main": "./dist/oeb-messages.cjs.js",
+  "module": "./dist/oeb-messages.es.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
