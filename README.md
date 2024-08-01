@@ -53,7 +53,7 @@ By default OEB messages component include OEB styles. To customize others styles
 <custom-message 
 border="1px solid lightsteelblue"
 backgroundColor="azure"
-color="gray"
+textColor="gray"
 url="YOUR_JSON_URL_HERE"
 >
 </custom-message>

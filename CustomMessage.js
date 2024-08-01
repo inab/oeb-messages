@@ -17,6 +17,8 @@ export default class CustomMessage extends HTMLElement {
         customElement.style.backgroundColor = this.backgroundColor;
         customElement.style.color = this.textColor;
         customElement.style.padding = '10px 20px';
+
+        console.log(this)
         let message = await this.getJSON(this.url).then(data => {
             if(data && data !== "") {
                 let response = JSON.parse(data);
@@ -27,7 +29,7 @@ export default class CustomMessage extends HTMLElement {
                         messageResponse += response.icon;
                     }
                     messageResponse += response.message;
-                    
+
                     let start_date = new Date(response.start_date + "Z");
                     let start_day = this.getDateOrdinals(start_date.getDate());
                     let end_date = new Date(response.end_date + "Z");
@@ -76,7 +78,23 @@ export default class CustomMessage extends HTMLElement {
     }
 
     connectedCallback() {
+        // The URL of the JSON file
         this.url = this.getAttribute('url');
+
+        // The color of the text message
+        if(this.hasAttribute('textColor')) {
+            this.textColor = this.getAttribute('textColor');
+        }
+
+        // The border color of the message box
+        if(this.hasAttribute('borderColor')) {
+            this.borderColor = this.getAttribute('borderColor');
+        }
+
+        // The background color of the message box
+        if(this.hasAttribute('backgroundColor')) {
+            this.backgroundColor = this.getAttribute('backgroundColor');
+        }
 
         this.createMessage().then(message => {
             this.innerHTML = message;
