@@ -79,6 +79,7 @@ export default class CustomMessage extends HTMLElement {
 
     connectedCallback() {
         // The URL of the JSON file
+        // It is mandatory to normal use
         this.url = this.getAttribute('url');
 
         // The color of the text message
