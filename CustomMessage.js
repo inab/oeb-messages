@@ -18,7 +18,6 @@ export default class CustomMessage extends HTMLElement {
         customElement.style.color = this.textColor;
         customElement.style.padding = '10px 20px';
 
-        console.log(this)
         let message = await this.getJSON(this.url).then(data => {
             if(data && data !== "") {
                 let response = JSON.parse(data);
