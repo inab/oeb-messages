@@ -1,6 +1,6 @@
 {
   "main.js": {
-    "file": "oeb-messages.cjs.js",
+    "file": "oeb-messages.umd.js",
     "name": "main",
     "src": "main.js",
     "isEntry": true

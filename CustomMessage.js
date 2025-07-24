@@ -18,32 +18,66 @@ export default class CustomMessage extends HTMLElement {
         customElement.style.color = this.textColor;
         customElement.style.padding = '10px 20px';
 
+        let style = `
+        <style>
+            .custom-message-box {
+                background-color: ${this.backgroundColor};
+                color: ${this.textColor};
+                padding: 10px 20px;
+                font-family: sans-serif;
+                line-height: 1.6;
+                text-align: center;
+                border-radius: 6px;
+            }
+
+            .custom-message-box svg {
+                padding-right: 5px;
+            }
+        </style>
+        `;
+
         let message = await this.getJSON(this.url).then(data => {
-            if(data && data !== "") {
+            if (data && data !== "") {
                 let response = JSON.parse(data);
-                let actualDate = new Date();
-                if(response.isActive) {
-                    let messageResponse = "";
-                    if(response.icon && response.icon !== "") {
+                let now = new Date();
+
+                if (response.isActive) {
+                    const showStart = response.start_show ? new Date(response.start_show + "T00:00:00Z") : null;
+                    const showEnd = response.end_show ? new Date(response.end_show + "T23:59:59Z") : null;
+
+                    const isInRange =
+                        (!showStart || now >= showStart) &&
+                        (!showEnd || now <= showEnd);
+
+                    if (!isInRange) {
+                        return '';
+                    }
+
+                    let messageResponse = style;
+                    messageResponse += `<div class="custom-message-box">`;
+
+                    if (response.icon && response.icon !== "") {
                         messageResponse += response.icon;
                     }
-                    messageResponse += response.message;
 
-                    let start_date = new Date(response.start_date + "Z");
-                    let start_day = this.getDateOrdinals(start_date.getDate());
-                    let end_date = new Date(response.end_date + "Z");
-                    let end_day = this.getDateOrdinals(end_date.getDate());
-                    let end_month = end_date.toLocaleString('en-EN', { month: 'long' });
+                    messageResponse += response.message;
+                    messageResponse += `</div>`;
+
+                    const start_date = new Date(response.start_date + "Z");
+                    const start_day = this.getDateOrdinals(start_date.getDate());
+
+                    const end_date = new Date(response.end_date + "Z");
+                    const end_day = this.getDateOrdinals(end_date.getDate());
+                    const end_month = end_date.toLocaleString('en-EN', { month: 'long' });
 
                     messageResponse = messageResponse.replace("##end_month", end_month);
                     messageResponse = messageResponse.replace("##start_date", start_day);
                     messageResponse = messageResponse.replace("##end_date", end_day);
+
                     return messageResponse;
                 }
-                else {
-                    return '';
-                }
             }
+
             return '';
         });
         if(message != "") {

@@ -10,7 +10,7 @@ export default defineConfig ({
             entry: path.resolve(__dirname, "main.js"),
             name: "oeb-messages",
             fileName: (format) => `oeb-messages.${format}.js`,
-            formats: ["es", "cjs"],
+            formats: ["es", "cjs", "umd"],
         },
         rollupOptions: {
             external: []

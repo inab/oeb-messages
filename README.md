@@ -51,7 +51,7 @@ To use OEB messages component declare the component:
 By default OEB messages component include OEB styles. To customize others styles, declare it on component:
 ```
 <custom-message 
-border="1px solid lightsteelblue"
+borderColor="lightsteelblue"
 backgroundColor="azure"
 textColor="gray"
 url="YOUR_JSON_URL_HERE"
