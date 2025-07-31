@@ -1,5 +1,5 @@
 {
-  "name": "@inab/oeb-messages",
+  "name": "@inb/oeb-messages",
   "version": "1.0.0",
   "description": "A messages component for OEB web ecosystem",
   "type": "module",

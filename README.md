@@ -12,7 +12,7 @@ You can use the component in three different ways:
 ### 📦 Option 1: Via NPM
 
 ```bash
-npm install @inab/oeb-messages
+npm install @inb/oeb-messages
 ```
 
 ```javascript
